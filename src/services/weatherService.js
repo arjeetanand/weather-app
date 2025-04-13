@@ -21,11 +21,12 @@ export const fetchWeatherByCity = async (city) => {
   }
 };
 
-export const fetchForecastByCity = async (city) => {
+const fetchWeatherByCoords = async (lat, lon) => {
   try {
-    const response = await axios.get(FORECAST_URL, {
+    const response = await axios.get(BASE_URL, {
       params: {
-        q: city,
+        lat,
+        lon,
         appid: API_KEY,
         units: "metric",
       },
@@ -33,7 +34,25 @@ export const fetchForecastByCity = async (city) => {
     return response.data;
   } catch (error) {
     throw new Error(
-      error.response?.data?.message || "Failed to fetch forecast"
+      error.response?.data?.message || "Failed to fetch current weather"
     );
   }
 };
+
+const fetchForecastByCity = async (city) => {
+  try {
+    const response = await axios.get('https://api.openweathermap.org/data/2.5/forecast', {
+      params: {
+        q: city,
+        appid: API_KEY,
+        units: 'metric',
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(
+      error.response?.data?.message || 'Failed to fetch forecast'
+    );
+  }
+};
+export { fetchWeatherByCoords, fetchForecastByCity };
