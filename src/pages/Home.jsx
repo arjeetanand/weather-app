@@ -187,14 +187,16 @@ export default function Home() {
           <SearchBar onSearch={handleSearch} />
 
           {history.length > 0 && (
-            <div className="mt-6">
-              <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-4">Recent searches:</h3>
+            <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-lg rounded-lg p-4 mt-6">
+              <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">
+                Recent searches:
+              </h3>
               <div className="flex flex-wrap gap-2">
                 {history.map((item, index) => (
                   <button
                     key={index}
                     onClick={() => handleSearch(item)}
-                    className="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full shadow text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all duration-300 text-sm font-medium"
+                    className="px-4 py-2 rounded-xl shadow-sm bg-blue-100 dark:bg-gray-700 text-blue-800 dark:text-gray-200 hover:bg-blue-200 dark:hover:bg-gray-600 transition-colors duration-200 text-sm font-medium"
                   >
                     {item}
                   </button>

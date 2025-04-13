@@ -19,11 +19,13 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
-      <ThemeToggle />
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/weather" element={<Home />} />
-      </Routes>
+        <ThemeToggle />
+        <div className="container mx-auto px-4"> {/* Added container */}
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/weather" element={<Home />} />
+          </Routes>
+        </div>
     </div>
   );
 }
